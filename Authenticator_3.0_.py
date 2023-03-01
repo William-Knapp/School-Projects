@@ -130,13 +130,16 @@ def main():
             continue
         if choice == "1":
             username = input("Enter username: ")
-            password = input("Enter a password: ")
-            print()
-            while not (auth.check_requirements(username, password)):
-                print("\nPassword does not meet the requirements. Passwords must contain:\n1 upper case letter, 1 lowercase letter, 1 number, and 1 special character.\nPasswords must also be at least 8 characters long,\nand must not contain your username.\n\nTry again.")
-                password = input("Enter password: ")
-            if auth.add_user(username, password):
-                print("User added successfully\n")
+            if username == "":
+                print("\nUsername cannot be blank.\n")
+            else:
+                password = input("Enter a password: ")
+                print()
+                while not (auth.check_requirements(username, password)):
+                    print("\nPassword does not meet the requirements. Passwords must contain:\n1 upper case letter, 1 lowercase letter, 1 number, and 1 special character.\nPasswords must also be at least 8 characters long,\nand must not contain your username.\n\nTry again.")
+                    password = input("Enter password: ")
+                if auth.add_user(username, password):
+                    print("User added successfully\n")
         elif choice == "2":
             username = input("Enter username: ")
             password = input("Enter password: ")
